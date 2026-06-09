@@ -1,0 +1,20 @@
+{
+    "name": "iot-api",
+    "version": "1.0.0",
+    "main": "build/index.js",
+    "files": [
+        "build"
+    ],
+    "scripts": {
+        "clean": "yarn g:clean",
+        "build-ts": "yarn g:build-ts tsconfig.build.json",
+        "watch-ts": "yarn run build-ts -w",
+        "build": "yarn clean && yarn run build-ts && yarn run lint",
+        "lint": "yarn g:lint",
+        "run-tests-once": "yarn g:run-tests-once",
+        "test": "yarn run run-tests-once --watchAll --passWithNoTests"
+    },
+    "publishConfig": {
+        "registry": "https://sf-493661126902.d.codeartifact.eu-west-1.amazonaws.com/npm/sf-npm/"
+    }
+}

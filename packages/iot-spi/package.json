@@ -1,0 +1,21 @@
+{
+    "name": "iot-spi",
+    "version": "0.1.0",
+    "main": "build/index.js",
+    "files": [
+        "build"
+    ],
+    "private": true,
+    "scripts": {
+        "clean": "yarn g:clean",
+        "build-ts": "yarn g:build-ts",
+        "watch-ts": "yarn run build-ts -w",
+        "build": "yarn clean && yarn run build-ts && yarn run lint",
+        "lint": "yarn g:lint",
+        "run-tests-once": "yarn g:run-tests-once",
+        "test": "yarn run run-tests-once --watchAll --passWithNoTests"
+    },
+    "dependencies": {
+        "iot-api": "workspace:^"
+    }
+}

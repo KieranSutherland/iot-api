@@ -1,0 +1,37 @@
+{
+    "compilerOptions": {
+        "module": "CommonJS",
+        "esModuleInterop": true,
+        "target": "es2022",
+        "moduleResolution": "node",
+        "outDir": "build",
+        "lib": [
+            "es2023",
+            "dom"
+        ],
+        "rootDir": ".",
+        "baseUrl": "./packages",
+        "paths": {
+            "*": [
+                "./*/src"
+            ]
+        },
+        "typeRoots": [
+            "./node_modules/@types",
+            "./packages/*/src/types"
+        ],
+        "composite": true,
+        "declaration": true,
+        "declarationMap": true,
+        "sourceMap": true,
+        "forceConsistentCasingInFileNames": true,
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "noImplicitAny": true,
+        "noUnusedLocals": true,
+        "skipLibCheck": true,
+        "strict": true,
+        "useUnknownInCatchVariables": false,
+        "ignoreDeprecations": "5.0"
+    }
+}

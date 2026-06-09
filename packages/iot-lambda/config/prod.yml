@@ -1,0 +1,5 @@
+environment:
+  PLATFORM_HIGH_LEVEL_REGION: '${self:custom.highLevelRegion}'
+  SERVICE_ID: '${self:custom.serviceId}'
+  STAGE: '${self:provider.stage}'
+${template:prodEventEnvironmentVars}

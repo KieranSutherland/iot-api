@@ -1,0 +1,24 @@
+{
+    "extends": "../../tsconfig.json",
+    "compilerOptions": {
+        "outDir": "./build",
+        "rootDir": "./src"
+    },
+    "include": [
+        "src/**/*"
+    ],
+    "exclude": [
+        "src/example/**",
+        "src/**/*.test.ts",
+        "src/**/*.itest.ts",
+        "src/**/test-util.ts"
+    ],
+    "references": [
+        {
+            "path": "../iot-api/tsconfig.build.json"
+        },
+        {
+            "path": "../iot-spi"
+        }
+    ]
+}

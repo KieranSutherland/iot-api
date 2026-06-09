@@ -1,0 +1,31 @@
+FROM node:20-bullseye
+
+WORKDIR /workspace
+
+RUN corepack enable && corepack prepare yarn@4.15.0 --activate
+
+RUN mkdir -p .yarn/releases
+COPY package.json yarn.lock .yarnrc.yml ./
+COPY .yarn/install-state.gz .yarn/install-state.gz
+COPY .yarn/releases/yarn-4.15.0.cjs .yarn/releases/
+COPY eslint.config.mjs ./
+
+# Copy all workspace package.json files before installing
+# so yarn can resolve and link workspace dependencies correctly
+COPY packages/iot-api/package.json ./packages/iot-api/
+COPY packages/iot-core/package.json ./packages/iot-core/
+COPY packages/iot-lambda/package.json ./packages/iot-lambda/
+COPY packages/iot-rest/package.json ./packages/iot-rest/
+COPY packages/iot-spi/package.json ./packages/iot-spi/
+COPY packages/iot-storage-dynamodb/package.json ./packages/iot-storage-dynamodb/
+
+RUN npm install -g serverless@3 && \
+    yarn install
+
+COPY . ./
+
+RUN yarn run build
+
+EXPOSE 3000
+
+CMD ["yarn", "workspace", "iot-lambda", "run", "sls-offline"]

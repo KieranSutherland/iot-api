@@ -1,0 +1,33 @@
+{
+    "extends": "../../tsconfig.json",
+    "compilerOptions": {
+        "outDir": "./build",
+        "rootDir": "./src"
+    },
+    "include": [
+        "src/**/*"
+    ],
+    "exclude": [
+        "src/**/*.test.ts",
+        "src/**/*.itest.ts",
+        "src/**/test-util.ts",
+        "src/graphql.ts",
+        "src/message-handler.ts",
+        "src/telemetry.ts",
+        "src/test/**"
+    ],
+    "references": [
+        {
+            "path": "../iot-api/tsconfig.build.json"
+        },
+        {
+            "path": "../iot-core"
+        },
+        {
+            "path": "../iot-rest"
+        },
+        {
+            "path": "../iot-storage-dynamodb"
+        }
+    ]
+}

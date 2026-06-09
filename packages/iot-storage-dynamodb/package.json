@@ -1,0 +1,30 @@
+{
+    "name": "iot-storage-dynamodb",
+    "version": "0.1.0",
+    "main": "build/index.js",
+    "files": [
+        "build"
+    ],
+    "private": true,
+    "scripts": {
+        "clean": "yarn g:clean",
+        "build-ts": "yarn g:build-ts",
+        "watch-ts": "yarn run build-ts -w",
+        "build": "yarn clean && yarn run build-ts && yarn run lint",
+        "lint": "yarn g:lint",
+        "run-tests-once": "yarn g:run-tests-once",
+        "test": "yarn run run-tests-once --watchAll",
+        "integration-test": "yarn g:integration-test"
+    },
+    "dependencies": {
+        "@aws-sdk/client-dynamodb": "^3.326.0",
+        "@aws-sdk/lib-dynamodb": "^3.326.0",
+        "iot-api": "workspace:^",
+        "iot-core": "workspace:^",
+        "iot-spi": "workspace:^"
+    },
+    "devDependencies": {
+        "aws-sdk-client-mock": "^4.0.1",
+        "aws-sdk-client-mock-jest": "^4.0.1"
+    }
+}

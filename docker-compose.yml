@@ -1,0 +1,43 @@
+services:
+  dynamodb-local:
+    image: amazon/dynamodb-local:latest
+    container_name: ${DYNAMODB_CONTAINER_NAME:-dynamodb-local-test}
+    command: "-jar DynamoDBLocal.jar -inMemory -sharedDb"
+    ports:
+      - "${DYNAMODB_PORT:-5000}:8000"
+
+  dynamodb-init:
+    build:
+      context: .
+      dockerfile: Dockerfile.lambda
+    depends_on:
+      dynamodb-local:
+        condition: service_started
+    environment:
+      DYNAMODB_ENDPOINT_URL: http://dynamodb-local:8000
+      PLATFORM_HIGH_LEVEL_REGION: EU
+      STAGE: offline
+      AWS_ACCESS_KEY_ID: test
+      AWS_SECRET_ACCESS_KEY: test
+      AWS_REGION: eu-west-1
+    command: ["yarn", "workspace", "iot-lambda", "run", "init-dynamodb-local"]
+
+  iot-lambda:
+    build:
+      context: .
+      dockerfile: Dockerfile.lambda
+    container_name: ${IOT_LAMBDA_CONTAINER_NAME:-iot-lambda}
+    depends_on:
+      dynamodb-init:
+        condition: service_completed_successfully
+    ports:
+      - "3000:3000"
+    environment:
+      DYNAMODB_ENDPOINT_URL: http://dynamodb-local:8000
+      PLATFORM_HIGH_LEVEL_REGION: EU
+      SERVICE_ID: iot-lambda
+      STAGE: offline
+      AWS_ACCESS_KEY_ID: test
+      AWS_SECRET_ACCESS_KEY: test
+      AWS_REGION: eu-west-1
+    command: ["yarn", "workspace", "iot-lambda", "run", "sls-offline"]

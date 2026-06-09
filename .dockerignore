@@ -1,0 +1,13 @@
+node_modules
+**/node_modules
+build
+**/build
+*.tsbuildinfo
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.gz
+.pnp.*
+.git
+.gitignore
+Dockerfile*
+docker-compose*.yml

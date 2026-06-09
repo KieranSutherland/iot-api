@@ -1,0 +1,10 @@
+{
+    "editor.tabSize": 4,
+    "editor.detectIndentation": false,
+    "importSorter.generalConfiguration.sortOnBeforeSave": true,
+    "editor.formatOnSave": false,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "explicit",
+        "source.removeUnusedImports": "explicit"
+    }
+}

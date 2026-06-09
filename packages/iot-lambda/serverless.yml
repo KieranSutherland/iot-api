@@ -1,0 +1,71 @@
+service: iot-lambda
+
+provider:
+  name: aws
+  deploymentMethod: direct
+  runtime: nodejs20.x
+  architecture: arm64
+  stage: ${opt:stage, 'research'}
+  region: ${opt:region, 'eu-west-1'}
+  memorySize: 512
+  timeout: 30
+  versionFunctions: true
+  logRetentionInDays: 90
+  deploymentBucket:
+    serverSideEncryption: AES256
+    name: ${self:provider.stage}-iot-lambda-${self:provider.region}
+
+plugins:
+  - serverless-esbuild
+  - serverless-offline
+  - serverless-prune-plugin
+  - serverless-log-forwarding
+
+functions:
+  api:
+    handler: build/handler.handle
+    name: ${self:service}-${self:provider.stage}
+    description: IoT REST API Lambda
+    environment: ${file(./config/${self:provider.stage}.yml):environment}
+    tags:
+      service: iot-lambda
+      stage: ${self:provider.stage}
+    events:
+      - httpApi:
+          path: /api/v1/{tenantId}/devices
+          method: GET
+      - httpApi:
+          path: /api/v1/{tenantId}/devices
+          method: POST
+      - httpApi:
+          path: /api/v1/{tenantId}/devices/{id}
+          method: GET
+      - httpApi:
+          path: /api/v1/{tenantId}/devices/{id}
+          method: PATCH
+      - httpApi:
+          path: /api/v1/{tenantId}/devices/{id}
+          method: DELETE
+
+custom:
+  highLevelRegion: ${env:PLATFORM_HIGH_LEVEL_REGION,'EU'}
+  serviceId: iot-lambda
+  lambdaAlias:
+    aliasName: STABLE
+  prune:
+    automatic: true
+    number: 5
+  esbuild:
+    bundle: true
+    minify: true
+    keepNames: true
+    resolveExtensions:
+      - .js
+
+package:
+  individually: true
+
+resources:
+  - Conditions:
+      PrimaryRegionOnly: !Equals [ !Ref "AWS::Region", "${file(./config/common.js):primaryRegion}" ]
+  - ${file(./config/dynamodb.yml)}

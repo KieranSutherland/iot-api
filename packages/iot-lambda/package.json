@@ -1,0 +1,39 @@
+{
+    "name": "iot-lambda",
+    "version": "0.1.0",
+    "main": "build/index.js",
+    "files": [
+        "build"
+    ],
+    "private": true,
+    "scripts": {
+        "clean": "yarn g:clean",
+        "build-ts": "yarn g:build-ts",
+        "watch-ts": "yarn run build-ts -w",
+        "build": "yarn clean && yarn run build-ts && yarn run lint",
+        "lint": "yarn g:lint",
+        "run-tests-once": "yarn g:run-tests-once",
+        "test": "yarn run run-tests-once --watchAll",
+        "offline": "yarn run build && yarn run sls-offline",
+        "sls-offline": "serverless offline start --stage offline --host 0.0.0.0",
+        "init-dynamodb-local": "node scripts/initDynamodbLocal.js"
+    },
+    "dependencies": {
+        "iot-api": "workspace:^",
+        "iot-core": "workspace:^",
+        "iot-rest": "workspace:^",
+        "iot-storage-dynamodb": "workspace:^"
+    },
+    "devDependencies": {
+        "@aws-sdk/client-dynamodb": "^3.326.0",
+        "@aws-sdk/lib-dynamodb": "^3.326.0",
+        "@types/aws-lambda": "^8.10.137",
+        "esbuild": "^0.20.0",
+        "extract-zip": "^2.0.1",
+        "p-map": "^4.0.0",
+        "serverless-esbuild": "^1.57.0",
+        "serverless-log-forwarding": "^3.2.0",
+        "serverless-offline": "^14.5.0",
+        "serverless-prune-plugin": "^2.0.2"
+    }
+}

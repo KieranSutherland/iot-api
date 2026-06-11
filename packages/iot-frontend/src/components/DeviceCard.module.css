@@ -1,0 +1,190 @@
+.card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    transition: box-shadow 0.15s ease;
+}
+
+.card:hover {
+    box-shadow: 0 4px 16px rgba(29, 133, 190, 0.1);
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.titleRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.typeLabel {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.name {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #111827;
+}
+
+.meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 0;
+}
+
+.metaItem {
+    font-size: 0.78rem;
+    color: #6b7280;
+}
+
+.fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 16px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.fieldLabel {
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #9ca3af;
+}
+
+.fieldValue {
+    font-size: 0.82rem;
+    color: #374151;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.mono {
+    font-family: 'SFMono-Regular', 'Consolas', 'Liberation Mono', monospace;
+    font-size: 0.76rem;
+}
+
+.description {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #6b7280;
+    line-height: 1.5;
+    border-left: 3px solid #e5e7eb;
+    padding-left: 10px;
+}
+
+.expandToggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 0.78rem;
+    color: #1d85be;
+    padding: 0;
+    text-align: left;
+    font-weight: 500;
+}
+
+.expandToggle:hover {
+    text-decoration: underline;
+}
+
+.jsonSection {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.jsonLabel {
+    margin: 0;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #9ca3af;
+}
+
+.json {
+    background: #f8fafc;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 0.75rem;
+    font-family: 'SFMono-Regular', 'Consolas', monospace;
+    color: #374151;
+    margin: 0;
+    overflow-x: auto;
+    max-height: 160px;
+    overflow-y: auto;
+}
+
+.actions {
+    display: flex;
+    gap: 8px;
+    padding-top: 4px;
+    border-top: 1px solid #f3f4f6;
+}
+
+.btnPrimary,
+.btnSecondary,
+.btnDanger {
+    flex: 1;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: opacity 0.1s, background 0.1s;
+}
+
+.btnPrimary {
+    background: #1d85be;
+    color: #fff;
+    border-color: #1d85be;
+}
+
+.btnPrimary:hover {
+    background: #1670a1;
+}
+
+.btnSecondary {
+    background: #f3f4f6;
+    color: #374151;
+    border-color: #e5e7eb;
+}
+
+.btnSecondary:hover {
+    background: #e5e7eb;
+}
+
+.btnDanger {
+    background: #fff;
+    color: #dc2626;
+    border-color: #fecaca;
+}
+
+.btnDanger:hover {
+    background: #fef2f2;
+}

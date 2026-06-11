@@ -6,18 +6,13 @@
         ]
     },
     "scripts": {
-        "build": "yarn workspaces foreach -Apt --jobs 4 run build",
+        "build": "yarn workspaces foreach -Apt --jobs 4 --exclude iot-frontend run build",
         "clean": "rimraf -g './packages/*/build' && rimraf -g './packages/**/*.tsbuildinfo'",
         "test": "yarn workspaces foreach -Ap --jobs 4 run run-tests-once",
-        "integration-test": "yarn workspaces foreach -A run integration-test",
-        "setup": "node scripts/setup.js && yarn install && yarn run build",
-        "add-package": "node scripts/addPackage.js",
-        "add-dependency": "node scripts/addDependency.js",
         "g:build-ts": "cd $INIT_CWD && tsc -b",
         "g:lint": "cd $INIT_CWD && eslint --max-warnings 0",
         "g:clean": "cd $INIT_CWD && rimraf ./build && rimraf -g './**/*.tsbuildinfo'",
-        "g:run-tests-once": "cd $INIT_CWD && jest --forceExit --coverage --verbose --detectOpenHandles --passWithNoTests",
-        "g:integration-test": "cd $INIT_CWD && SERVICE_LOG_LEVEL=debug jest --forceExit --detectOpenHandles --config jest.itest.config.js --passWithNoTests"
+        "g:run-tests-once": "cd $INIT_CWD && jest --forceExit --coverage --verbose --detectOpenHandles --passWithNoTests"
     },
     "devDependencies": {
         "@stylistic/eslint-plugin": "^5.5.0",

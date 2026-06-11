@@ -1,0 +1,18 @@
+FROM node:20-bullseye
+
+WORKDIR /workspace
+
+# Copy repository metadata and Yarn runtime so we can install workspace deps
+COPY package.json yarn.lock .yarnrc.yml tsconfig.json ./
+COPY .yarn/install-state.gz .yarn/install-state.gz
+COPY .yarn/releases/yarn-4.15.0.cjs .yarn/releases/
+COPY packages/ ./packages/
+
+# Install all workspace dependencies (including devDeps)
+RUN node .yarn/releases/yarn-4.15.0.cjs install
+
+WORKDIR /workspace/packages/iot-frontend
+
+EXPOSE 5173
+
+CMD ["yarn", "workspace", "iot-frontend", "dev", "--host", "0.0.0.0"]

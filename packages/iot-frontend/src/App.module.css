@@ -1,0 +1,361 @@
+.app {
+    display: flex;
+    min-height: 100vh;
+    background: #f0f2f5;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.sidebar {
+    width: 280px;
+    flex-shrink: 0;
+    background: #fff;
+    border-right: 1px solid #e5e7eb;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.sidebarHeader {
+    padding: 24px 20px 16px;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 2px;
+}
+
+.logoIcon {
+    font-size: 1.3rem;
+}
+
+.logoText {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: #1d85be;
+    letter-spacing: -0.01em;
+}
+
+.logoSub {
+    margin: 0;
+    font-size: 0.73rem;
+    color: #9ca3af;
+    letter-spacing: 0.02em;
+}
+
+.sidebarSection {
+    padding: 16px 20px;
+    border-bottom: 1px solid #f3f4f6;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.sidebarSectionLabel {
+    margin: 0;
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #9ca3af;
+}
+
+.apiUrl {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 0.82rem;
+    font-family: 'SFMono-Regular', Consolas, monospace;
+    color: #374151;
+    background: #f8fafc;
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid #e5e7eb;
+}
+
+.apiUrlDot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #16a34a;
+    flex-shrink: 0;
+}
+
+.sidebarInput {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    color: #111827;
+    background: #fff;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+.sidebarInput:focus {
+    outline: none;
+    border-color: #1d85be;
+    box-shadow: 0 0 0 3px rgba(29, 133, 190, 0.12);
+}
+
+.actionList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.actionBtn {
+    width: 100%;
+    background: #f8fafc;
+    border: 1px solid #e5e7eb;
+    border-radius: 7px;
+    padding: 10px 12px;
+    cursor: pointer;
+    text-align: left;
+    transition: background 0.1s, border-color 0.1s;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.actionBtn:hover:not(:disabled) {
+    background: #eff8ff;
+    border-color: #93c5fd;
+}
+
+.actionBtn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.actionBtnTop {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.actionLabel {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #111827;
+}
+
+.actionDesc {
+    font-size: 0.71rem;
+    color: #9ca3af;
+    font-family: 'SFMono-Regular', Consolas, monospace;
+    padding-left: 2px;
+}
+
+.lookupBtn {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    width: 100%;
+    padding: 8px 12px;
+    background: #1d85be;
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.1s;
+}
+
+.lookupBtn:hover {
+    background: #1670a1;
+}
+
+.sidebarFooter {
+    padding: 16px 20px;
+    margin-top: auto;
+    border-top: 1px solid #f3f4f6;
+}
+
+.routeList {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.routeHint {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.72rem;
+    color: #6b7280;
+    font-family: 'SFMono-Regular', Consolas, monospace;
+    margin: 0;
+}
+
+.methodBadgeGet {
+    display: inline-flex;
+    align-items: center;
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    background: #dbeafe;
+    color: #1d4ed8;
+    flex-shrink: 0;
+}
+
+.methodBadgePost {
+    display: inline-flex;
+    align-items: center;
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    background: #dcfce7;
+    color: #166534;
+    flex-shrink: 0;
+}
+
+.methodBadgePatch {
+    display: inline-flex;
+    align-items: center;
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    background: #fef9c3;
+    color: #854d0e;
+    flex-shrink: 0;
+}
+
+.methodBadgeDelete {
+    display: inline-flex;
+    align-items: center;
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    background: #fee2e2;
+    color: #991b1b;
+    flex-shrink: 0;
+}
+
+.main {
+    flex: 1;
+    padding: 32px;
+    min-width: 0;
+}
+
+.mainHeader {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.mainTitle {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #111827;
+    letter-spacing: -0.02em;
+}
+
+.deviceCount {
+    font-size: 0.82rem;
+    color: #9ca3af;
+    font-weight: 500;
+}
+
+.errorBanner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 0.85rem;
+    color: #991b1b;
+    margin-bottom: 20px;
+}
+
+.errorDismiss {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #dc2626;
+    font-size: 0.9rem;
+    padding: 0 4px;
+    flex-shrink: 0;
+}
+
+.loadingState {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 60px 0;
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+
+.spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #e5e7eb;
+    border-top-color: #1d85be;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.emptyState {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 0;
+    text-align: center;
+}
+
+.emptyIcon {
+    font-size: 3rem;
+    margin-bottom: 16px;
+}
+
+.emptyTitle {
+    margin: 0 0 8px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #374151;
+}
+
+.emptyBody {
+    margin: 0;
+    font-size: 0.875rem;
+    color: #9ca3af;
+    max-width: 320px;
+    line-height: 1.6;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+    gap: 16px;
+}

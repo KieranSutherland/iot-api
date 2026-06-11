@@ -6,5 +6,8 @@
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": "explicit",
         "source.removeUnusedImports": "explicit"
+    },
+    "chat.tools.terminal.autoApprove": {
+        "docker compose": true
     }
 }

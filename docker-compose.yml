@@ -41,3 +41,23 @@ services:
       AWS_SECRET_ACCESS_KEY: test
       AWS_REGION: eu-west-1
     command: ["yarn", "workspace", "iot-lambda", "run", "sls-offline"]
+
+  iot-frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    container_name: ${IOT_FRONTEND_CONTAINER_NAME:-iot-frontend}
+    working_dir: /workspace/packages/iot-frontend
+    # Mount only source for live reload to avoid overwriting image-installed node_modules
+    volumes:
+      - ./packages/iot-frontend/src:/workspace/packages/iot-frontend/src:cached
+      - ./packages/iot-frontend/public:/workspace/packages/iot-frontend/public:cached
+    ports:
+      - "5173:5173"
+    depends_on:
+      iot-lambda:
+        condition: service_started
+      dynamodb-local:
+        condition: service_started
+    environment:
+      CHOKIDAR_USEPOLLING: "true"

@@ -37,6 +37,58 @@ Update specific device:
 Delete specific device:
 `DELETE` `/api/v1/{tenantId}/devices/{id}`
 
+### Device specification
+
+The device entity represents a physical IoT device and contains identifying, connectivity, and runtime state information.
+
+- **name**: string - Human-friendly device name (e.g. "Smart light").
+- **type**: string - Device type (e.g. `light`, `thermostat`, `moisture_sensor`).
+- **status**: string - Runtime status (e.g. `online`, `offline`, `maintenance`).
+- **firmwareVersion**: string - Firmware/software version running on the device.
+- **location**: string - Optional textual location (e.g. `kitchen`).
+- **connectivity**: object - Network/connectivity details:
+	- **protocol**: string - e.g. `http`, `mqtt`.
+	- **ipAddress**: string - IPv4/IPv6 address of the device (when applicable).
+	- **macAddress**: string - MAC address of the device network interface.
+- **state**: object - Device-specific runtime state (keys depend on device type). Example for a light:
+	- **light**: string - e.g. `on`/`off`.
+	- **brightness**: string - e.g. `85%` or numeric value.
+- **description**: string - Optional description of the device.
+- **metadata**: object - Arbitrary key/value data (e.g. battery level, vendor data).
+
+Below is an example of creating a device using the REST API. Replace `{tenantId}` with the tenant identifier.
+
+```bash
+curl -X POST http://localhost:3000/api/v1/{tenantId}/devices \
+	-H "Content-Type: application/json" \
+	-d '{
+		"name": "Smart light",
+		"type": "light",
+		"status": "online",
+		"firmwareVersion": "24.5",
+		"location": "kitchen",
+		"connectivity": {
+			"protocol": "http",
+			"ipAddress": "192.168.1.1",
+			"macAddress": "00:1A:2B:3C:4D:5E"
+		},
+		"state": {
+			"light": "off",
+			"brightness": "85%"
+		},
+		"description": "RGB light",
+		"metadata": {
+			"battery": "90%"
+		}
+	}'
+```
+
+Successful response: HTTP `201` with the created device object including server-assigned fields such as `id`, `createdAt`, and `updatedAt`.
+
+For the complete device type definition and all fields returned by the API, see the device index: [packages/iot-api/src/device/index.ts](packages/iot-api/src/device/index.ts)
+
+
+
 ## Running locally
 
 ### Prerequisites

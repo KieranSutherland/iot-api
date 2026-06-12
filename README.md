@@ -63,4 +63,3 @@ If either of these ports do not work, check the container logs in case they rout
 - Multi-device selection in one query
 - Separate device state and device information upserting into separate endpoints to more easily permit for admin users vs tenant users.
 - Make all frontend text translatable
-- Add GitHub Actions for automated testing after each commit

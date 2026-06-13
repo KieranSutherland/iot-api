@@ -20,6 +20,10 @@
             "./node_modules/@types",
             "./packages/*/src/types"
         ],
+        "types": [
+            "node",
+            "jest"
+        ],
         "composite": true,
         "declaration": true,
         "declarationMap": true,

@@ -8,7 +8,6 @@
         "src/**/*"
     ],
     "exclude": [
-        "src/example/**",
         "src/operations/**",
         "src/types/**",
         "src/**/*.test.ts",
